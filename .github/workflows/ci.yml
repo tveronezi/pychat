@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9"]
+        poetry-version: ["1.2.0b1"]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Display info
+        run: |
+          echo "ref -> ${{ github.ref }}"
+          echo "base_ref -> ${{ github.base_ref }}"
+          echo "head_ref -> ${{ github.head_ref }}"
+          echo "ref_name -> ${{ github.ref_name }}"
+          echo "event.ref -> ${{ github.event.ref }}"
+          echo "event.ref_type -> ${{ github.event.ref_type }}"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/checkout@v2
+      - uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+      - run: poetry install
+      - run: poetry run black . --check
+      - run: poetry run mypy . --check
+      - run: poetry build

@@ -2,7 +2,7 @@
 
 ```
 poetry install
-poetry run start
+poetry run uvicorn try_fastapi.main:app --reload
 poetry build
 ```
 
