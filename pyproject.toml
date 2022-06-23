@@ -9,9 +9,10 @@ packages = [{include = "try_fastapi"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.78.0"
-uvicorn = "^0.17.6"
+uvicorn = {extras = ["standard"], version = "^0.17.6"}
 alembic = "^1.8.0"
 psycopg2 = "^2.9.3"
+strawberry-graphql = {extras = ["fastapi"], version = "^0.114.3"}
 
 
 [build-system]
