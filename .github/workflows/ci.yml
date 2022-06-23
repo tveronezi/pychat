@@ -37,4 +37,5 @@ jobs:
       - run: poetry install
       - run: poetry run black . --check
       - run: poetry run mypy . --check
+      - run: poetry run flake8 .
       - run: poetry build
