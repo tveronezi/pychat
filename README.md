@@ -1,8 +1,8 @@
-# Trying fastapi
+# simple chat api with python
 
 ```
 poetry install
-poetry run uvicorn try_fastapi.main:app --reload
+poetry run uvicorn pychat.main:app --reload
 poetry build
 ```
 
