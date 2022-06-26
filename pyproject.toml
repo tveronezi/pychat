@@ -12,6 +12,7 @@ fastapi = "^0.78.0"
 alembic = "^1.8.0"
 psycopg2 = "^2.9.3"
 strawberry-graphql = {extras = ["fastapi"], version = "^0.114.3"}
+SQLAlchemy = "^1.4.39"
 
 [tool.poetry.group.dev.dependencies]
 uvicorn = {extras = ["standard"], version = "^0.17.6"}
