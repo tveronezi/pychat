@@ -1,7 +1,7 @@
 import strawberry
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
-from pychat import api_system;
+from pychat import api_system
 
 
 schema = strawberry.Schema(api_system.Query)
