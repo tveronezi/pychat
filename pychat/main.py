@@ -1,16 +1,10 @@
 import strawberry
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
+from pychat import api_system;
 
 
-@strawberry.type
-class Query:
-    @strawberry.field
-    def ping(self) -> str:
-        return "pong"
-
-
-schema = strawberry.Schema(Query)
+schema = strawberry.Schema(api_system.Query)
 
 graphql_app = GraphQLRouter(schema)
 
